@@ -83,7 +83,34 @@ const ProductForm = () => {
           value={payload.name}
           onChange={(e) => setPayload({ ...payload, name: e.target.value })}
           required
+          placeholder="Name"
         />
+      </div>
+      <div>
+        <label className="block ml-1">Product Catagory</label>
+        <input
+          className="bg-gray-300 w-full px-4 py-2 border outline-pink rounded-md"
+          type="text"
+          value={payload.catagory}
+          onChange={(e) => setPayload({ ...payload, catagory: e.target.value })}
+          required
+          placeholder="Catagory"
+        />
+      </div>
+      <div>
+        <label className="block ml-1">Product Price</label>
+        <input
+          className="bg-gray-300 w-full px-4 py-2 border outline-pink rounded-md"
+          type="text"
+          value={payload.price}
+          onChange={(e) => setPayload({ ...payload, price: e.target.value })}
+          required
+          placeholder="Price"
+        />
+      </div>
+
+      <div className="flex justify-end">
+        <button className="bg-pink text-white px-8 py-2 rounded-md">Add</button>
       </div>
     </form>
   );
