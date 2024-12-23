@@ -16,7 +16,7 @@ const Popup = ({ setOpenPopup, setUpdateTable }: PropsType) => {
 
   const [inputData, setInputData] = useState({
     name: productData.name,
-    catagory: productData.catagory,
+    category: productData.catagory,
     price: productData.price,
   });
 
@@ -25,7 +25,7 @@ const Popup = ({ setOpenPopup, setUpdateTable }: PropsType) => {
     dispatch(setLoading(true));
 
     axios
-      .put(`/api/edit_product/${productData_id}`, inputData)
+      .put(`/api/edit_product/${productData._id}`, inputData)
       .then((res) => {
         makeToast("Product updated successfully!");
         setUpdateTable((prevState) => !prevState);
@@ -61,10 +61,10 @@ const Popup = ({ setOpenPopup, setUpdateTable }: PropsType) => {
           <input
             className="border block border-gray-500 outline-none px-4 py-2 rounded-lg w-fit"
             type="text"
-            placeholder="catagory"
-            value={inputData.catagory}
+            placeholder="category"
+            value={inputData.category}
             onChange={(e) =>
-              setInputData({ ...inputData, catagory: e.target.value })
+              setInputData({ ...inputData, category: e.target.value })
             }
             required
           />

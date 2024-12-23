@@ -11,7 +11,7 @@ interface IPayload {
   imgSrc: null | string;
   fileKey: null | string;
   name: string;
-  catagory: string;
+  category: string;
   price: string;
 }
 
@@ -20,7 +20,7 @@ const ProductForm = () => {
     imgSrc: null,
     fileKey: null,
     name: "",
-    catagory: "",
+    category: "",
     price: "",
   });
 
@@ -33,45 +33,44 @@ const ProductForm = () => {
 
     axios
       .post("/api/add_product", payload)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .then((res) => {
-        makeToast("Product added successfully!");
+        makeToast("Product added Successfully");
         setPayload({
           imgSrc: null,
           fileKey: null,
           name: "",
-          catagory: "",
+          category: "",
           price: "",
         });
       })
-      .catch((err) => console.log(err))
+      .catch((error) => console.log(error))
       .finally(() => dispatch(setLoading(false)));
   };
 
   return (
-    <form className="flex flex-col gap-4 onSubmit={handleSubmit}">
-      <image
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+      <Image
         className="max-h-[300px] w-auto object-contain rounded-md"
         src={payload.imgSrc ? payload.imgSrc : "/placeholder.jpg"}
         width={800}
-        heigth={500}
+        height={500}
         alt="product_image"
       />
 
       <UploadButton
         endpoint="imageUploader"
         onClientUploadComplete={(res) => {
-          // Do something with the response
           console.log(res);
 
           setPayload({
             ...payload,
-            imgSrc: res[0].url,
-            fileKey: res[0].key,
+            imgSrc: res[0]?.url,
+            fileKey: res[0]?.key,
           });
         }}
         onUploadError={(error: Error) => {
-          // Do something with the error.
-          console.log("ERROR! ${error}");
+          console.log(`ERROR! ${error}`);
         }}
       />
 
@@ -83,34 +82,35 @@ const ProductForm = () => {
           value={payload.name}
           onChange={(e) => setPayload({ ...payload, name: e.target.value })}
           required
-          placeholder="Name"
         />
       </div>
+
       <div>
-        <label className="block ml-1">Product Catagory</label>
+        <label className="block ml-1">Product Category</label>
         <input
           className="bg-gray-300 w-full px-4 py-2 border outline-pink rounded-md"
           type="text"
-          value={payload.catagory}
-          onChange={(e) => setPayload({ ...payload, catagory: e.target.value })}
+          value={payload.category}
+          onChange={(e) => setPayload({ ...payload, category: e.target.value })}
           required
-          placeholder="Catagory"
         />
       </div>
+
       <div>
-        <label className="block ml-1">Product Price</label>
+        <label className="block ml-1">Product price</label>
         <input
           className="bg-gray-300 w-full px-4 py-2 border outline-pink rounded-md"
           type="text"
           value={payload.price}
           onChange={(e) => setPayload({ ...payload, price: e.target.value })}
           required
-          placeholder="Price"
         />
       </div>
 
       <div className="flex justify-end">
-        <button className="bg-pink text-white px-8 py-2 rounded-md">Add</button>
+        <button className="bg-green-500 text-white px-8 py-2 rounded-md">
+          Add
+        </button>
       </div>
     </form>
   );
