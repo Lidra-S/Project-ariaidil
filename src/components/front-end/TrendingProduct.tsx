@@ -8,7 +8,7 @@ interface IProduct {
   imgSrc: string;
   fileKey: string;
   name: string;
-  catagory: string;
+  category: string;
   price: number;
 }
 
@@ -43,7 +43,7 @@ const TrendingProduct = () => {
             key={item._id}
             id={item._id}
             img={item.imgSrc}
-            catagory={item.catagory}
+            category={item.category}
             title={item.name}
             price={item.price}
           />

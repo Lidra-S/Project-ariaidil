@@ -16,7 +16,7 @@ const Popup = ({ setOpenPopup, setUpdateTable }: PropsType) => {
 
   const [inputData, setInputData] = useState({
     name: productData.name,
-    category: productData.catagory,
+    category: productData.category,
     price: productData.price,
   });
 

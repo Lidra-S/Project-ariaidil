@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(requast: NextRequest) {
   try {
     const body = await requast.json();
-    const { imgSrc, fileKey, name, catagory, price } = body;
+    const { imgSrc, fileKey, name, category, price } = body;
 
     await connectMongoDB();
 
@@ -13,7 +13,7 @@ export async function POST(requast: NextRequest) {
       imgSrc,
       fileKey,
       name,
-      catagory,
+      category,
       price,
     });
 
