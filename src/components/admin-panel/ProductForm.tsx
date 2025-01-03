@@ -4,6 +4,7 @@ import { useAppDispatch } from "@/redux/hooks";
 import { makeToast } from "@/utils/helper";
 import { UploadButton } from "@/utils/uploadthing";
 import axios from "axios";
+import { error } from "console";
 import Image from "next/image";
 import React, { FormEvent, useState } from "react";
 
@@ -33,7 +34,6 @@ const ProductForm = () => {
 
     axios
       .post("/api/add_product", payload)
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .then((res) => {
         makeToast("Product added Successfully");
         setPayload({
@@ -70,7 +70,7 @@ const ProductForm = () => {
           });
         }}
         onUploadError={(error: Error) => {
-          console.log(`ERROR! ${error}`);
+          console.log("ERROR! ${error}");
         }}
       />
 
@@ -108,9 +108,7 @@ const ProductForm = () => {
       </div>
 
       <div className="flex justify-end">
-        <button className="bg-green-500 text-white px-8 py-2 rounded-md">
-          Add
-        </button>
+        <button className="bg-pink text-white px-8 py-2 rounded-md">Add</button>
       </div>
     </form>
   );

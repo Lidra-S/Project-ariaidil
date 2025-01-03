@@ -5,8 +5,8 @@ import {
 } from "react-icons/ai";
 import toast from "react-hot-toast";
 import { useAppDispatch } from "@/redux/hooks";
+import { addToCart } from "@/redux/features/cartSlice";
 import { makeToast } from "@/utils/helper";
-import { addTocCart } from "@/redux/features/cartSlice";
 
 interface propsType {
   id: string;
@@ -28,7 +28,7 @@ const ProductCard = ({ id, img, category, title, price }: propsType) => {
       quantity: 1,
     };
 
-    dispatch(addTocCart(payload));
+    dispatch(addToCart(payload));
     makeToast("Added to Cart");
   };
 

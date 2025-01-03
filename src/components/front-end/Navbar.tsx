@@ -14,12 +14,12 @@ const Navbar = ({ setShowCart }: PropsType) => {
     <div className="pt-4 bg-white top-0 sticky">
       <div className="container">
         <div className="flex justify-between items-center">
-          <div className="text-4xl font-bold">Logo</div>
+          <div className="text-4x1 font-bold">Logo</div>
           <div className="lg:flex hidden w-full max-w-[500px]">
             <input
               className="border-2 border-accent px-6 py-2 w-full"
               type="text"
-              placeholder="Search for products..."
+              placeholder="Search for Products..."
             />
 
             <div className="bg-accent text-white text-[26px] grid place-items-center px-4">
@@ -51,6 +51,8 @@ const Navbar = ({ setShowCart }: PropsType) => {
             </div>
           </div>
         </div>
+
+        <div className="border-b border-gray-200 pt-4" />
       </div>
     </div>
   );

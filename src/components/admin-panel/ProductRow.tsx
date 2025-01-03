@@ -4,6 +4,7 @@ import { setProduct } from "@/redux/features/productSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { makeToast } from "@/utils/helper";
 import axios from "axios";
+import { error } from "console";
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
 import { CiEdit } from "react-icons/ci";
@@ -32,12 +33,12 @@ const ProductRow = ({
   const onDelete = () => {
     dispatch(setLoading(true));
 
-    const setLoad = {
+    const payload = {
       fileKey: product.fileKey,
     };
 
     axios
-      .delete("/api/uploadthing", { data: setLoad })
+      .delete("/api/uploadthing", { data: payload })
       .then((res) => {
         console.log(res.data);
 
@@ -45,14 +46,15 @@ const ProductRow = ({
           .delete(`/api/delete_product/${product._id}`)
           .then((res) => {
             console.log(res.data);
-            makeToast("Product deleted successfully!");
+            makeToast("Product Deleted Successfully");
             setUpdateTable((prevState) => !prevState);
           })
-          .catch((err) => console.log(err))
+          .catch((error) => console.log(error))
           .finally(() => dispatch(setLoading(false)));
       })
-      .catch((err) => console.log(err));
+      .catch((error) => console.log(error));
   };
+
   return (
     <tr>
       <td>
@@ -70,12 +72,17 @@ const ProductRow = ({
           alt="product_image"
         />
       </td>
-      <td className="text-2xl flex items-center gap-2 text-gray-600">
-        <CiEdit className="cursor-pointer hover:text-black" onClick={onEdit} />
-        <RiDeleteBin5Line
-          className="text-[20px] cursor-pointer hover:text-red-600"
-          onClick={onDelete}
-        />
+      <td>
+        <div className="text-2xl flex items-center gap-2 text-gray-600">
+          <CiEdit
+            className="cursor-pointer hover:text-black"
+            onClick={onEdit}
+          />
+          <RiDeleteBin5Line
+            className="text=[20px] cursor-pointer hover:text-red-600"
+            onClick={onDelete}
+          />
+        </div>
       </td>
     </tr>
   );

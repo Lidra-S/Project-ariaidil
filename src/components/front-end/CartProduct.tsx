@@ -30,6 +30,7 @@ const CartProduct: React.FC<PropsType> = ({
           </p>
         </div>
       </div>
+
       <RxCross1
         className="cursor-pointer"
         onClick={() => dispatch(removeFromCart(id))}

@@ -6,6 +6,8 @@ export async function DELETE(request: NextRequest, URLParams: any) {
   try {
     const id = URLParams.params.id;
 
+    await connectMongoDB();
+
     await Product.findByIdAndDelete(id);
 
     return NextResponse.json({ msg: "Product Deleted Successfully" });
@@ -13,7 +15,7 @@ export async function DELETE(request: NextRequest, URLParams: any) {
     return NextResponse.json(
       {
         error,
-        msg: "Something went wrong",
+        msg: "Something Went Wrong",
       },
       { status: 400 }
     );

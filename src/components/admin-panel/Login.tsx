@@ -8,7 +8,7 @@ const Login = () => {
         className="bg-white px-8 py-4 flex gap-2 items-center"
         onClick={() => signIn("google")}
       >
-        <FcGoogle size={30} /> Sign in with Google
+        <FcGoogle size={30} /> Sign In With Google
       </button>
     </div>
   );

@@ -1,6 +1,11 @@
-import { RxCross1 } from "react-icons/rx";
 import { useAppSelector } from "@/redux/hooks";
+import React, { Dispatch, SetStateAction } from "react";
+import { RxCross1 } from "react-icons/rx";
 import CartProduct from "./CartProduct";
+
+interface PropsType {
+  setShowCart: Dispatch<SetStateAction<boolean>>;
+}
 
 const Cart = ({ setShowCart }: any) => {
   const products = useAppSelector((state) => state.cartReducer);
@@ -13,7 +18,7 @@ const Cart = ({ setShowCart }: any) => {
 
   return (
     <div className="bg-[#0000007d] w-full min-h-screen fixed left-0 top-0 z-20 overflow-y-scroll">
-      <div className="max-w-[400px] w-full min-h-full bg-white absolute right-0 top-0 p-6">
+      <div className="max-w-[400px] w-full bg-white absolute right-0 top-0 p-6">
         <RxCross1
           className="absolute right-0 top-0 m-6 text-[24px] cursor-pointer"
           onClick={() => setShowCart(false)}
@@ -34,15 +39,17 @@ const Cart = ({ setShowCart }: any) => {
             />
           ))}
         </div>
+
         <div className="flex justify-between items-center font-medium text-xl py-4">
           <p>Total:</p>
           <p>${getTotal()}.00</p>
         </div>
-        <button className="bg-black text-white text-center w-full rounded-3x1 py-2 hover:bg-accent mb-4 mt-4">
+
+        <button className="bg-black text-white text-center w-full rounded-3xl py-2 hover:bg-accent mb-4 mt-4">
           View Cart
         </button>
-        <button className="bg-black text-white text-center w-full rounded-3x1 py-2 hover:bg-accent">
-          Checkout
+        <button className="bg-black text-white text-center w-full rounded-3xl py-2 hover:bg-accent mb-4 mt-4">
+          CheckOut
         </button>
       </div>
     </div>

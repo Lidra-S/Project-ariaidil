@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import axios from "axios";
+import React from "react";
+import { error } from "console";
 
 interface IProduct {
   _id: string;
@@ -12,23 +14,23 @@ interface IProduct {
   price: number;
 }
 
-const TrendingProduct = () => {
-  const [product, setProduct] = useState([]);
+const TrendingProducts = () => {
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     axios
-      .get("/api/product")
+      .get("/api/get_products")
       .then((res) => {
         console.log(res.data);
-        setProduct(res.data);
+        setProducts(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((error) => console.log(error));
   }, []);
 
   return (
-    <div className="container  mt-32">
+    <div className="container mt-32">
       <div className="sm:flex justify-between items-center">
-        <h2 className="text-4xl font-medium">Trending Product</h2>
+        <h2 className="text-4xl font-medium">Trending Products</h2>
 
         <div className="text-gray-500 flex gap-4 text-xl mt-4 sm:mt-0">
           <div className="text-black">New</div>
@@ -38,7 +40,7 @@ const TrendingProduct = () => {
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8">
-        {product.map((item: IProduct) => (
+        {products.map((item: IProduct) => (
           <ProductCard
             key={item._id}
             id={item._id}
@@ -53,4 +55,4 @@ const TrendingProduct = () => {
   );
 };
 
-export default TrendingProduct;
+export default TrendingProducts;

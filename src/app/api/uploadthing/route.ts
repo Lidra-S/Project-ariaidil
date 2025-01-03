@@ -16,5 +16,5 @@ export async function DELETE(request: Request) {
   const utApi = new UTApi();
   await utApi.deleteFiles(fileKey);
 
-  return Response.json({ massage: "Image Deleted" });
+  return Response.json({ message: "Image Deleted" });
 }
