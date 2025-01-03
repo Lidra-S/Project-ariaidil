@@ -3,10 +3,10 @@ const Banner = () => {
     <div className="container mt-32">
       <div className="grid lg:grid-cols-[66%, 34%] gap-4 pr-[15px]">
         <div className="h-[200px] md:h-[260px] bg-[url(/Logitech.JPG)] bg-cover bg-center rounded-xl p-8 md:p-16">
-          <p className="text-[#f8fafc] text-xl font-medium">
+          <p className="text-[#000000] text-xl font-medium">
             Sale 20% off all store
           </p>
-          <h2 className="text-[#f8fafc] font-bold text-xl sm:text-3xl max-w-[240px]">
+          <h2 className="text-[#000000] font-bold text-xl sm:text-3xl max-w-[240px]">
             Logitech SuperLight 2
           </h2>
           <a
@@ -16,7 +16,7 @@ const Banner = () => {
             Shop Now
           </a>
         </div>
-        <div className="h-[260px] bg-[url(/keyboard2.JPG)] bg-right rounded-xl hidden lg:block"></div>
+        <div className="h-[260px] bg-[url(/keyboard2.JPEG)] bg-right rounded-xl hidden lg:block"></div>
       </div>
     </div>
   );
