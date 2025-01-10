@@ -16,7 +16,7 @@ const Banner = () => {
             Shop Now
           </a>
         </div>
-        <div className="h-[260px] bg-[url(/keyboard2.JPEG)] bg-right rounded-xl hidden lg:block"></div>
+        <div className="h-[260px] bg-[url(/keyboard2.JPG)] bg-right rounded-xl hidden lg:block"></div>
       </div>
     </div>
   );
